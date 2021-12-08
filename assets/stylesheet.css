@@ -53,4 +53,11 @@ input {
 .columnOfCitiesAndSearch {
     display:table-column;
     flex-direction: row;
+    width: 100%;
+}
+
+.cityAndForecastData {
+    display: table-column;
+    width:100%;
+    border: grey;
 }
