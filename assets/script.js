@@ -1,5 +1,5 @@
-// GIVEN a weather dashboard with form inputs
-// WHEN I search for a city
+// DONE - GIVEN a weather dashboard with form inputs
+// DONE - WHEN I search for a city
 // THEN I am presented with current and future conditions for that city and that city is added to the search history
 // WHEN I view current weather conditions for that city
 // THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
@@ -10,3 +10,16 @@
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
 
+
+var cityUserSearchesFor = document.querySelector("#city");
+var currentCityContainer = document.querySelector("selectedCityCurrentWeather")
+
+
+//WHEN SEARCH BUTTON IS CLICKED, LOG THE VALUE
+document.querySelector("#searchButton").addEventListener('click',function() {
+    console.log(cityUserSearchesFor.value);
+})
+
+
+
+//https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
