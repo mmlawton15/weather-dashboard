@@ -14,24 +14,16 @@
 var cityUserSearchesFor = document.querySelector("#city");
 var currentCityContainer = document.querySelector("selectedCityCurrentWeather");
 var myApiKey = "2e2ca0507dda47fa6f94fa93790f0ec0";
-var cityName; //= cityUserSearchesFor.value;
+var cityName;
 
 //WHEN SEARCH BUTTON IS CLICKED, LOG THE VALUE
 document.querySelector("#searchButton").addEventListener('click',function() {
     console.log(cityUserSearchesFor.value);
-    //getSearchedCityWeather();
+    cityName = cityUserSearchesFor.value;
+    getSearchedCityWeather();
 })
 
-// var getSearchedCityWeather = function() {
-//     var currentWeather = fetch("https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={APIkey}");
-//     console.log(currentWeather);
-// }
-
-//api.openweathermap.org/data/2.5/forecast?q={cityname}&appid={APIkey}
-
-
-//from the javascript section of the website
-//api.openweathermap.org/data/2.5/onecall?lat=38.8&lon:12.09&callback=test;
-
-//with the information filled out
-//https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=alerts,minutely,hourly&appid=2e2ca0507dda47fa6f94fa93790f0ec0
+var getSearchedCityWeather = function() {
+    var currentWeather = fetch(`api.openweathermap.org/data/2.5/forecast?=${cityName}&appid=${myApiKey}`);
+    console.log(currentWeather);
+}
