@@ -18,8 +18,16 @@ var currentCityContainer = document.querySelector("selectedCityCurrentWeather")
 //WHEN SEARCH BUTTON IS CLICKED, LOG THE VALUE
 document.querySelector("#searchButton").addEventListener('click',function() {
     console.log(cityUserSearchesFor.value);
+    getSearchedCityWeather();
 })
 
+var getSearchedCityWeather = function() {
+    fetch(api.openweathermap.org/data/2.5/onecall);
+}
 
 
-//https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
+//from the javascript section of the website
+//api.openweathermap.org/data/2.5/onecall?lat=38.8&lon:12.09&callback=test;
+
+//with my api key
+//https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid=2e2ca0507dda47fa6f94fa93790f0ec0
