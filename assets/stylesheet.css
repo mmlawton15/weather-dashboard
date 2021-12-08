@@ -1,20 +1,14 @@
 
 
 header {
-    margin:auto;
-    padding: auto;
-}
-
-
-.title {
     font-size:36px;
     font-weight: bold;
     color: white;
     background-image: linear-gradient(to right, blue, rgb(99, 0, 192));
     height:75px;
     width:auto;
-    text-align: justify;
     display:flex;
     justify-content:center;
     line-height: 75px;
 }
+
