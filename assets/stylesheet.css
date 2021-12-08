@@ -12,3 +12,45 @@ header {
     line-height: 75px;
 }
 
+input {
+    width: 100%;
+    height: 25px;
+}
+
+.button {
+    background-color:dodgerblue;
+    color: white;
+    border: none;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 35px;
+}
+.button:hover {
+    background-color:white;
+    color:dodgerblue;
+    border: dodgerblue solid;
+}
+
+.searchModule {
+    border-bottom: grey solid;
+}
+
+.bodyOfPage {
+    display:inline-flex;
+}
+
+.cityButtons {
+    background-color: grey;
+    color: white;
+    border: none;
+    width: 100%;
+    margin-top: 15px;
+    height: 35px;
+}
+
+
+.columnOfCitiesAndSearch {
+    display:table-column;
+    flex-direction: row;
+}
