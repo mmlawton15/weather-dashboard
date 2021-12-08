@@ -23,7 +23,10 @@ document.querySelector("#searchButton").addEventListener('click',function() {
     getSearchedCityWeather();
 })
 
+
+//REFERENCE THE API WHEN THE BUTTON IS CLICKED BASED ON THE CITYNAME
 var getSearchedCityWeather = function() {
-    var currentWeather = fetch(`api.openweathermap.org/data/2.5/forecast?=${cityName}&appid=${myApiKey}`);
+    var currentWeather = fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${myApiKey}`);
     console.log(currentWeather);
 }
+//https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${myApiKey}
