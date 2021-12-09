@@ -53,3 +53,10 @@ var getSearchedCityWeather = function() {
 
 //WEBSITE FOR 5 DAY FORECAST
 //(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${myApiKey}`)
+
+//FOR LOOP FOR LOOPING THROUGH 5 DAY FORECAST
+//for(var i=0; i+=8; i <= data.list.length){
+    //console.log(data.list[i]) //show me that object
+//}
+//i+=8 lets us increment our iterating variable up by 8, rather than the common i++ incrementing by 1!
+//You could even start off at i = 1-4 and it would probably do well
