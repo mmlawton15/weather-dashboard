@@ -14,13 +14,14 @@
 var cityUserSearchesFor = document.querySelector("#city");
 var currentCityContainer = document.querySelector("selectedCityCurrentWeather");
 var myApiKey = "2e2ca0507dda47fa6f94fa93790f0ec0";
-var currentDateAndTime = document.getElementById("cityAndDate").textContent += moment().format('dddd, MMMM Do YYYY');
+var currentDateAndTime = document.getElementById("cityAndDate").textContent += moment().format('dddd (MM/DD/YY) h:mm a');
 var cityName;
 
 //WHEN SEARCH BUTTON IS CLICKED, LOG THE VALUE
 document.querySelector("#searchButton").addEventListener('click',function() {
     console.log(cityUserSearchesFor.value);
     cityName = cityUserSearchesFor.value;
+    document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime);
     getSearchedCityWeather();
 })
 
@@ -46,7 +47,7 @@ var getSearchedCityWeather = function() {
 }
 
 
-console.log(currentDateAndTime);
+//SANITY CHECK console.log(currentDateAndTime);
 
 
 
