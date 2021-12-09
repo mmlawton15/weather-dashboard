@@ -28,7 +28,7 @@ document.querySelector("#searchButton").addEventListener('click',function() {
 
 //REFERENCE THE API WHEN THE BUTTON IS CLICKED BASED ON THE CITYNAME
 var getSearchedCityWeather = function() {
-    var currentWeather = fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${myApiKey}`)
+    var currentWeather = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${myApiKey}`)
     .then(function(cityName) {
         if (cityName.status !==200) {
             console.log("there was a problem, status code:" + cityName.status);
@@ -51,4 +51,5 @@ var getSearchedCityWeather = function() {
 
 
 
-//https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${myApiKey}
+//WEBSITE FOR 5 DAY FORECAST
+//(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${myApiKey}`)
