@@ -1,5 +1,5 @@
 
-
+/*HEADER STYLING*/
 header {
     font-size:36px;
     font-weight: bold;
@@ -12,11 +12,11 @@ header {
     line-height: 75px;
 }
 
+/*LEFT COLUMN STYLING*/
 input {
     width: 98%;
     height: 25px;
 }
-
 .button {
     background-color:dodgerblue;
     color: white;
@@ -48,14 +48,14 @@ input {
     margin-top: 15px;
     height: 35px;
 }
-
-
 .columnOfCitiesAndSearch {
     display:table-column;
     flex-direction: row;
     width: 100%;
 }
 
+
+/*SELECTED CITY WEATHER STYLING*/
 .cityAndForecastData {
     display: table-column;
     width:100%;
@@ -70,4 +70,21 @@ input {
 
 .selectedCityCurrentWeather h4 {
     font-weight:normal;
+}
+
+
+.uvBox {
+    display:table-row;
+}
+
+.uvIndexBox {
+    background-color:yellow;
+}
+
+.uvIndexBoxMedium {
+    background-color:orange;
+}
+
+.uvIndexBoxHigh {
+    background-color: red;
 }

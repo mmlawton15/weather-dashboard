@@ -48,33 +48,38 @@ var getSearchedCityWeather = function() {
             document.querySelector("#temperature").textContent = ("Temperature: " + data.main.temp + "°F"); //get into the array, select the secion you want the data from and put it intp the text content
             document.querySelector("#wind").textContent = ("Wind Speed: " + data.wind.speed + " mph");
             document.querySelector("#humidity").textContent = ("Humidity: " + data.main.humidity + "%");
+            getSearchedCityUVIndex(lat, lon);
         });
     })
     .catch(function(err) {
         console.log("Fetch error :-S", err);
     });
     console.log(currentWeather);
-    getSearchedCityUVIndex();
 }
 
 //CODE FOR THE UV INDEX
-var getSearchedCityUVIndex = function() {
+var getSearchedCityUVIndex = function(lat, lon) {
     var currentUVIndex = fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${myApiKey}`)
     .then(function(cityName) {
+        console.log(cityName.body);
         if (cityName.status !==200) {
             console.log("there was a problem, status code: " + cityName.status);
             return;
         }
         cityName.json().then(function(data) {//Examine the text in the response
-            console.log(data); //console log the array of weather data
-            document.querySelector("#uvIndex").textContent = ("UV Index: " + data) //UV Index isn't on this API sok imght have to switch to lat and long  for this
+            document.querySelector("#uvIndexBox").textContent = (data.current.uvi)
+            if (data.current.uvi > 7) {
+                document.querySelector("#uvIndexBox").className = "uvIndexBoxHigh";
+            } if (data.current.uvi > 3) {
+                document.querySelector("#uvIndexBox").className = "uvIndexBoxMedium";
+            } else {
+                document.querySelector("#uvIndexBox").className = "uvIndexBox";
+            }
         });
     })
     .catch(function(err) {
         console.log("Fetch error :-S", err);
     });
-
-    console.log(currentUVIndex);
 }
 
 
