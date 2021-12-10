@@ -25,9 +25,8 @@ var longitude;
 document.querySelector("#searchButton").addEventListener('click',function() {
     console.log(cityUserSearchesFor.value);
     cityName = cityUserSearchesFor.value;
-    latitude = cityUserSearchesFor.data.coord.lat;
+    latitude = cityUserSearchesFor.data.coord.lat; //when the search button is clicked, grab the longitude from the data and set it to this variable
     longitude = cityUserSearchesFor.data.coord.lon;
-
     document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
     getSearchedCityWeather();
     //console.log(currentWeather.main.temp);
