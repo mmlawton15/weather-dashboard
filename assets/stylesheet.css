@@ -67,3 +67,7 @@ input {
 .selectedCityCurrentWeather {
     border: black solid 1px;
 }
+
+.selectedCityCurrentWeather h4 {
+    font-weight:normal;
+}
