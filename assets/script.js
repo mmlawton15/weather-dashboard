@@ -16,6 +16,7 @@ var currentCityContainer = document.querySelector("selectedCityCurrentWeather");
 var myApiKey = "2e2ca0507dda47fa6f94fa93790f0ec0";
 var currentDateAndTime = document.getElementById("cityAndDate").textContent += moment().format('dddd (MM/DD/YY) h:mm a');
 var cityName;
+var currentWeather;
 
 //WHEN SEARCH BUTTON IS CLICKED, LOG THE VALUE
 document.querySelector("#searchButton").addEventListener('click',function() {
@@ -23,6 +24,11 @@ document.querySelector("#searchButton").addEventListener('click',function() {
     cityName = cityUserSearchesFor.value;
     document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime);
     getSearchedCityWeather();
+    console.log(currentWeather.main.temp);
+    document.querySelector("#temperature").textContent = (currentWeather.main.temp); //get into the array, select the secion you want the data from and put it intp the text content
+    document.querySelector("#wind").textContent = (currentWeather.wind.speed);
+    document.querySelector("#humidity").textContent = (currentWeather.main.humidity);
+    document.querySelector("#uvIndex").textContent = (currentWeather.uvi) //where is the UVI?
 })
 
 
