@@ -25,21 +25,15 @@ var longitude;
 document.querySelector("#searchButton").addEventListener('click',function() {
     console.log(cityUserSearchesFor.value);
     cityName = cityUserSearchesFor.value;
-    latitude = cityUserSearchesFor.data.coord.lat; //when the search button is clicked, grab the longitude from the data and set it to this variable
-    longitude = cityUserSearchesFor.data.coord.lon;
     document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
     getSearchedCityWeather();
-    //console.log(currentWeather.main.temp);
-    // document.querySelector("#temperature").textContent = (data.main.temp); //get into the array, select the secion you want the data from and put it intp the text content
-    // document.querySelector("#wind").textContent = (currentWeather.wind.speed);
-    // document.querySelector("#humidity").textContent = (currentWeather.main.humidity);
-    // document.querySelector("#uvIndex").textContent = (currentUVIndex.uvi) //UV Index isn't on this API sok imght have to switch to lat and long  for this
+
 })
 
 
 //REFERENCE THE API WHEN THE BUTTON IS CLICKED BASED ON THE CITYNAME
 var getSearchedCityWeather = function() {
-    var currentWeather = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${myApiKey}`)
+    var currentWeather = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=${myApiKey}`)
     .then(function(cityName) {
         if (cityName.status !==200) {
             console.log("there was a problem, status code:" + cityName.status);
@@ -47,34 +41,41 @@ var getSearchedCityWeather = function() {
         }
         cityName.json().then(function(data) {//Examine the text in the response
             console.log(data); //console log the array of weather data
+            latitude = data.coord.lat; //when the search button is clicked, grab the longitude from the data and set it to this variable
+            longitude = data.coord.lon;
             console.log(latitude);
             console.log(longitude);
+            document.querySelector("#temperature").textContent = ("Temperature: " + data.main.temp + "°F"); //get into the array, select the secion you want the data from and put it intp the text content
+            document.querySelector("#wind").textContent = ("Wind Speed: " + data.wind.speed + " mph");
+            document.querySelector("#humidity").textContent = ("Humidity: " + data.main.humidity + "%");
+            // document.querySelector("#uvIndex").textContent = (currentUVIndex.uvi) //UV Index isn't on this API sok imght have to switch to lat and long  for this
         });
     })
     .catch(function(err) {
         console.log("Fetch error :-S", err);
     });
     console.log(currentWeather);
+    //getSearchedCityUVIndex();
 }
 
 //CODE FOR THE UV INDEX
-var getSearchedCityUVIndex = function() {
-    var currentUVIndex = fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${myApiKey}`)
-    .then(function(cityName) {
-        if (cityName.status !==200) {
-            console.log("there was a problem, status code:" + cityName.status);
-            return;
-        }
-        cityName.json().then(function(data) {//Examine the text in the response
-            console.log(data); //console log the array of weather data
-        });
-    })
-    .catch(function(err) {
-        console.log("Fetch error :-S", err);
-    });
+// var getSearchedCityUVIndex = function() {
+//     var currentUVIndex = fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${myApiKey}`)
+//     .then(function(cityName) {
+//         if (cityName.status !==200) {
+//             console.log("there was a problem, status code: " + cityName.status);
+//             return;
+//         }
+//         cityName.json().then(function(data) {//Examine the text in the response
+//             console.log(data); //console log the array of weather data
+//         });
+//     })
+//     .catch(function(err) {
+//         console.log("Fetch error :-S", err);
+//     });
 
-    console.log(currentUVIndex);
-}
+//     console.log(currentUVIndex);
+// }
 
 
 //WEBSITE FOR 5 DAY FORECAST
