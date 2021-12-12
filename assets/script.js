@@ -27,7 +27,7 @@ document.querySelector("#searchButton").addEventListener('click',function() {
     cityName = cityUserSearchesFor.value;
     document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
     getSearchedCityWeather();
-
+    getSearchedCityForecast();
 })
 
 
@@ -82,6 +82,27 @@ var getSearchedCityUVIndex = function(lat, lon) {
     });
 }
 
+var getSearchedCityForecast = function() {
+    var forecast = fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=imperial&appid=${myApiKey}`)
+    .then(function(cityName) {
+        if (cityName.status !==200) {
+            console.log("there was a problem, status code: " +cityName.status);
+            return;
+        }
+        for (var i=0; i +=8; i<=data.list.length){
+            cityName.json().then(function(data) {
+                console.log(data);
+                document.getElementsByClassName("miniDate").textContent += (moment().format("MM/DD/YY") + 1); //get the current date and add 1
+                document.getElementsByClassName("miniTemp").textContent = ("Temp: " + data.list[i].main.temp + "°F");
+                document.getElementsByClassName("miniWind").textContent = ("Wind: " + data.list[i].wind.speed + "mph");
+                document.getElementsByClassName("miniHumidity").textContent = ("Humidity: " + data.list[i].main.humidity + "%");
+            });
+        }   
+    })
+    .catch(function(err) {
+        console.log("Fetch error :-S", err);
+    });
+}
 
 //WEBSITE FOR 5 DAY FORECAST
 //(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${myApiKey}`)

@@ -72,7 +72,6 @@ input {
     font-weight:normal;
 }
 
-
 .uvBox {
     display:table-row;
 }
@@ -87,4 +86,16 @@ input {
 
 .uvIndexBoxHigh {
     background-color: red;
+}
+
+/*5 DAY FORCAST STYLING*/
+.miniForecast {
+    background-color: midnightblue;
+    color:mintcream;
+    padding: 10px;
+    display: inline-block;
+}
+
+.miniForecast h4 {
+    font-weight:bold;
 }
