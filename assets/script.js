@@ -97,6 +97,7 @@ var getSearchedCityWeather = function() {
             document.querySelector("#temperature").textContent = ("Temperature: " + data.main.temp + "°F"); //get into the array, select the secion you want the data from and put it intp the text content
             document.querySelector("#wind").textContent = ("Wind Speed: " + data.wind.speed + " mph");
             document.querySelector("#humidity").textContent = ("Humidity: " + data.main.humidity + "%");
+            document.querySelector("#weatherImage").innerHTML = (data.weather.icon);
             getSearchedCityUVIndex(lat, lon);
         });
     })
