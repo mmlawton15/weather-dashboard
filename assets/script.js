@@ -142,15 +142,9 @@ var getSearchedCityForecast = function() {
             return;
         }
             cityName.json().then(function(data) {
-                for (var i=0; i<=data.list.length; i+=8){ //for variable i, increase by 8 (the 5 day forecast shows 3 hour increments for the data so by doing it every 8 i can skip days)
+                for (var i=0; i<=data.list.length; i++){ //for variable i, increase by 8 (the 5 day forecast shows 3 hour increments for the data so by doing it every 8 i can skip days)
                     console.log(data.list[i]);//look at the data currently assigned to i
-                    //var arrayOfMinis = document.getElementsByClassName("miniDate", "miniTemp", "miniWind", "miniHumidity");
-                    var banana = document.getElementsByClassName("miniDate")
-                    console.log(banana);//ask BCS said this would help me see what I was trying to grab
-                    document.querySelectorAll("#miniDate").textContent = moment().format("MM/DD/YYYY"); //set the text content for any element with a id of miniTemp to te date
-                    document.querySelectorAll("#miniTemp").textContent = ("Temp: " + data.main.temp + "°F");
-                    document.querySelectorAll("#miniWind").textContent = ("Wind: " + data.wind.speed + "mph");
-                    document.querySelectorAll("#miniHumidity").textContent = ("Humidity: " + data.main.humidity + "%");
+                    document.querySelectorAll("#miniDate").textContent = (data.dt_txt); //set the text content for any element with a id of miniTemp to te date
                 };
             })  
     })
@@ -159,6 +153,6 @@ var getSearchedCityForecast = function() {
     });
 }
 
-// again, you can either use what youre using now and change how you use it to fit the datatype you are currently getting (object, not array) 
-// or you can use a different syntax (which u can google the docs for once you know what it is) that retrieves a datatype that your current code is fit to use (array) 
-// and that you have already used in the code
+// document.querySelectorAll("#miniTemp").textContent = ("Temp: " + data.main.temp + "°F");
+// document.querySelectorAll("#miniWind").textContent = ("Wind: " + data.wind.speed + "mph");
+// document.querySelectorAll("#miniHumidity").textContent = ("Humidity: " + data.main.humidity + "%");
