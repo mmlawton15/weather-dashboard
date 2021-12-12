@@ -142,9 +142,9 @@ var getSearchedCityForecast = function() {
             return;
         }
             cityName.json().then(function(data) {
-                for (var i=0; i+=8; i<=data.list.length){ //for variable i, increase by 8 (the 5 day forecast shows 3 hour increments for the data so by doing it every 8 i can skip days)
+                for (var i=0; i<=data.list.length; i+=8){ //for variable i, increase by 8 (the 5 day forecast shows 3 hour increments for the data so by doing it every 8 i can skip days)
                     console.log(data.list[i]);//look at the data currently assigned to i
-                    //var arrayOfMiniDivs = document.getElementsByClassName("miniDate", "miniTemp", "miniWind", "miniHumidity");
+                    //var arrayOfMinis = document.getElementsByClassName("miniDate", "miniTemp", "miniWind", "miniHumidity");
                     var banana = document.getElementsByClassName("miniDate")
                     console.log(banana);//ask BCS said this would help me see what I was trying to grab
                     document.querySelectorAll("#miniDate").textContent = moment().format("MM/DD/YYYY"); //set the text content for any element with a id of miniTemp to te date
@@ -158,13 +158,6 @@ var getSearchedCityForecast = function() {
         console.log("Fetch error :-S", err);
     });
 }
-
-
-
-//FOR LOOP FOR LOOPING THROUGH 5 DAY FORECAST
-//i+=8 lets us increment our iterating variable up by 8, rather than the common i++ incrementing by 1!
-//You could even start off at i = 1-4 and it would probably do well
-
 
 // again, you can either use what youre using now and change how you use it to fit the datatype you are currently getting (object, not array) 
 // or you can use a different syntax (which u can google the docs for once you know what it is) that retrieves a datatype that your current code is fit to use (array) 
