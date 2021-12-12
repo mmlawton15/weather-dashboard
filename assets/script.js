@@ -89,10 +89,13 @@ var getSearchedCityForecast = function() {
             console.log("there was a problem, status code: " +cityName.status);
             return;
         }
-        for (var i=0; i +=8; i<=data.list.length){
+        for (var i=0; i+=8; i<=data.list.length){
             cityName.json().then(function(data) {
-                console.log(data);
-                document.getElementsByClassName("miniDate").textContent += (moment().format("MM/DD/YY") + 1); //get the current date and add 1
+                console.log(data.list[i]);
+                //document.getElementsByClassName("miniDate").textContent += (moment().format("MM/DD/YYYY") + 1); //get the current date and add 1
+                var banana = document.getElementsByClassName("miniDate")
+                console.log(banana);
+                document.getElementsByClassName("miniDate").textContent = moment().format("MM/DD/YYYY");
                 document.getElementsByClassName("miniTemp").textContent = ("Temp: " + data.list[i].main.temp + "°F");
                 document.getElementsByClassName("miniWind").textContent = ("Wind: " + data.list[i].wind.speed + "mph");
                 document.getElementsByClassName("miniHumidity").textContent = ("Humidity: " + data.list[i].main.humidity + "%");
@@ -113,3 +116,8 @@ var getSearchedCityForecast = function() {
 //}
 //i+=8 lets us increment our iterating variable up by 8, rather than the common i++ incrementing by 1!
 //You could even start off at i = 1-4 and it would probably do well
+
+
+// again, you can either use what youre using now and change how you use it to fit the datatype you are currently getting (object, not array) 
+// or you can use a different syntax (which u can google the docs for once you know what it is) that retrieves a datatype that your current code is fit to use (array) 
+// and that you have already used in the code
