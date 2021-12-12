@@ -131,26 +131,28 @@ var getSearchedCityUVIndex = function(lat, lon) {
     });
 }
 
+
+
 //CODE FOR 5 DAY FORECAST
 var getSearchedCityForecast = function() {
     var forecast = fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=imperial&appid=${myApiKey}`)
     .then(function(cityName) {
         if (cityName.status !==200) {
-            console.log("there was a problem, status code: " +cityName.status);
+            console.log("there was a problem, status code: " + cityName.status);
             return;
         }
-        for (var i=0; i+=8; i<=data.list.length){
             cityName.json().then(function(data) {
-                console.log(data.list[i]);
-                //document.getElementsByClassName("miniDate").textContent += (moment().format("MM/DD/YYYY") + 1); //get the current date and add 1
-                var banana = document.getElementsByClassName("miniDate")
-                console.log(banana);
-                document.getElementsByClassName("miniDate").textContent = moment().format("MM/DD/YYYY");
-                document.getElementsByClassName("miniTemp").textContent = ("Temp: " + data.list[i].main.temp + "°F");
-                document.getElementsByClassName("miniWind").textContent = ("Wind: " + data.list[i].wind.speed + "mph");
-                document.getElementsByClassName("miniHumidity").textContent = ("Humidity: " + data.list[i].main.humidity + "%");
-            });
-        }   
+                for (var i=0; i+=8; i<=data.list.length){ //for variable i, increase by 8 (the 5 day forecast shows 3 hour increments for the data so by doing it every 8 i can skip days)
+                    console.log(data.list[i]);//look at the data currently assigned to i
+                    //var arrayOfMiniDivs = document.getElementsByClassName("miniDate", "miniTemp", "miniWind", "miniHumidity");
+                    var banana = document.getElementsByClassName("miniDate")
+                    console.log(banana);//ask BCS said this would help me see what I was trying to grab
+                    document.querySelectorAll("#miniDate").textContent = moment().format("MM/DD/YYYY"); //set the text content for any element with a id of miniTemp to te date
+                    document.querySelectorAll("#miniTemp").textContent = ("Temp: " + data.main.temp + "°F");
+                    document.querySelectorAll("#miniWind").textContent = ("Wind: " + data.wind.speed + "mph");
+                    document.querySelectorAll("#miniHumidity").textContent = ("Humidity: " + data.main.humidity + "%");
+                };
+            })  
     })
     .catch(function(err) {
         console.log("Fetch error :-S", err);
