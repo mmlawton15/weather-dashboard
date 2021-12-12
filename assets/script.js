@@ -30,6 +30,55 @@ document.querySelector("#searchButton").addEventListener('click',function() {
     getSearchedCityForecast();
 })
 
+//CODE FOR CITY BUTTONS ON THE LEFT
+document.querySelector("#austin").addEventListener('click', function() {
+    cityName = "Austin";
+    document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
+    getSearchedCityWeather();
+    getSearchedCityForecast();
+})
+document.querySelector("#chicago").addEventListener('click', function() {
+    cityName = "Chicago";
+    document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
+    getSearchedCityWeather();
+    getSearchedCityForecast();
+})
+document.querySelector("#newYork").addEventListener('click', function() {
+    cityName = "New York";
+    document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
+    getSearchedCityWeather();
+    getSearchedCityForecast();
+})
+document.querySelector("#orlando").addEventListener('click', function() {
+    cityName = "Orlando";
+    document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
+    getSearchedCityWeather();
+    getSearchedCityForecast();
+})
+document.querySelector("#sanFrancisco").addEventListener('click', function() {
+    cityName = "San Francisco";
+    document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
+    getSearchedCityWeather();
+    getSearchedCityForecast();
+})
+document.querySelector("#seattle").addEventListener('click', function() {
+    cityName = "Seattle";
+    document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
+    getSearchedCityWeather();
+    getSearchedCityForecast();
+})
+document.querySelector("#denver").addEventListener('click', function() {
+    cityName = "Denver";
+    document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
+    getSearchedCityWeather();
+    getSearchedCityForecast();
+})
+document.querySelector("#atlanta").addEventListener('click', function() {
+    cityName = "Atlanta";
+    document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
+    getSearchedCityWeather();
+    getSearchedCityForecast();
+})
 
 //REFERENCE THE API WHEN THE BUTTON IS CLICKED BASED ON THE CITYNAME
 var getSearchedCityWeather = function() {
@@ -82,6 +131,7 @@ var getSearchedCityUVIndex = function(lat, lon) {
     });
 }
 
+//CODE FOR 5 DAY FORECAST
 var getSearchedCityForecast = function() {
     var forecast = fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=imperial&appid=${myApiKey}`)
     .then(function(cityName) {
@@ -107,13 +157,9 @@ var getSearchedCityForecast = function() {
     });
 }
 
-//WEBSITE FOR 5 DAY FORECAST
-//(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${myApiKey}`)
+
 
 //FOR LOOP FOR LOOPING THROUGH 5 DAY FORECAST
-//for(var i=0; i+=8; i <= data.list.length){
-    //console.log(data.list[i]) //show me that object
-//}
 //i+=8 lets us increment our iterating variable up by 8, rather than the common i++ incrementing by 1!
 //You could even start off at i = 1-4 and it would probably do well
 
