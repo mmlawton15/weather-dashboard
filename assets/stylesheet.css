@@ -99,3 +99,7 @@ input {
 .miniForecast h4 {
     font-weight:bold;
 }
+
+.miniDate {
+    color: white;
+}

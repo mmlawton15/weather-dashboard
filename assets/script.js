@@ -110,7 +110,7 @@ var getSearchedCityWeather = function() {
 var getSearchedCityUVIndex = function(lat, lon) {
     var currentUVIndex = fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${myApiKey}`)
     .then(function(cityName) {
-        console.log(cityName.body);
+        //console.log(cityName.body);
         if (cityName.status !==200) {
             console.log("there was a problem, status code: " + cityName.status);
             return;
@@ -141,12 +141,12 @@ var getSearchedCityForecast = function() {
             console.log("there was a problem, status code: " + cityName.status);
             return;
         }
-            cityName.json().then(function(data) {
-                for (var i=0; i<=data.list.length; i++){ //for variable i, increase by 8 (the 5 day forecast shows 3 hour increments for the data so by doing it every 8 i can skip days)
-                    console.log(data.list[i]);//look at the data currently assigned to i
-                    document.querySelectorAll("#miniDate").textContent = (data.dt_txt); //set the text content for any element with a id of miniTemp to te date
-                };
-            })  
+        cityName.json().then(function(data) {
+            for (var i = 0; i<=data.list.length; i++){ //for variable i, increase by 8 (the 5 day forecast shows 3 hour increments for the data so by doing it every 8 i can skip days)
+                console.log(data.list[i]);//look at the data currently assigned to i
+                document.querySelectorAll("#miniDate").textContent = (data.list[i].dt_txt); //set the text content for any element with a id of miniTemp to te date
+            };
+        })  
     })
     .catch(function(err) {
         console.log("Fetch error :-S", err);
