@@ -8,7 +8,7 @@ This application is my 6th challenge of the bootcamp. The user types in the city
 I used CSS, Javascript and HTML to create this app.
 
 ## Where can I find it?
-This can either be found on my GitHub Repository page (), or at the Live URL ().
+This can either be found on my GitHub Repository page (https://github.com/mmlawton15/weather-dashboard-snowflake), or at the Live URL (https://mmlawton15.github.io/weather-dashboard-snowflake/).
 
 ## What does it look like?
 ![image](./assets/weatherDhasboard.jpg)
