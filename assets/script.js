@@ -31,8 +31,14 @@ document.querySelector("#searchButton").addEventListener('click',function() {
 })
 
 //CODE FOR CITY BUTTONS ON THE LEFT
-document.querySelector("#austin").addEventListener('click', function() {
-    cityName = "Austin";
+document.querySelector("#charleston").addEventListener('click', function() {
+    cityName = "Charleston";
+    document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
+    getSearchedCityWeather();
+    getSearchedCityForecast();
+})
+document.querySelector("#charlotte").addEventListener('click', function() {
+    cityName = "Charlotte";
     document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
     getSearchedCityWeather();
     getSearchedCityForecast();
@@ -49,26 +55,20 @@ document.querySelector("#newYork").addEventListener('click', function() {
     getSearchedCityWeather();
     getSearchedCityForecast();
 })
-document.querySelector("#orlando").addEventListener('click', function() {
-    cityName = "Orlando";
-    document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
-    getSearchedCityWeather();
-    getSearchedCityForecast();
-})
 document.querySelector("#sanFrancisco").addEventListener('click', function() {
     cityName = "San Francisco";
     document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
     getSearchedCityWeather();
     getSearchedCityForecast();
 })
-document.querySelector("#seattle").addEventListener('click', function() {
-    cityName = "Seattle";
+document.querySelector("#columbia").addEventListener('click', function() {
+    cityName = "Columbia";
     document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
     getSearchedCityWeather();
     getSearchedCityForecast();
 })
-document.querySelector("#denver").addEventListener('click', function() {
-    cityName = "Denver";
+document.querySelector("#palmBeach").addEventListener('click', function() {
+    cityName = "Palm Beach";
     document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
     getSearchedCityWeather();
     getSearchedCityForecast();
@@ -133,19 +133,24 @@ var getSearchedCityUVIndex = function(lat, lon) {
 }
 
 
-
 //CODE FOR 5 DAY FORECAST
 var getSearchedCityForecast = function() {
     var forecast = fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=imperial&appid=${myApiKey}`)
-    .then(function(cityName) {
-        if (cityName.status !==200) {
-            console.log("there was a problem, status code: " + cityName.status);
+    .then(function(response) {
+        if (response.status !==200) {
+            console.log("there was a problem, status code: " + response.status);
             return;
         }
-        cityName.json().then(function(data) {
-            for (var i = 0; i<=data.list.length; i++){ //for variable i, increase by 8 (the 5 day forecast shows 3 hour increments for the data so by doing it every 8 i can skip days)
-                console.log(data.list[i]);//look at the data currently assigned to i
-                document.querySelectorAll("#miniDate").textContent = (data.list[i].dt_txt); //set the text content for any element with a id of miniTemp to te date
+        response.json().then(function(data) {
+            for (var i = 4; i<=data.list.length; i = i + 8){ //for variable i, increase by 8 (the 5 day forecast shows 3 hour increments for the data so by doing it every 8 i can skip days)
+                console.log(i);//look at the data currently assigned to i
+                console.log(data.list[i]);
+                var dateValueStringFromAPI = (data.list[i].dt_txt)
+                var stringDateValue = (dateValueStringFromAPI.slice(0,10));
+                document.querySelector(`#miniForecastDay${i} .miniDate`).textContent = (stringDateValue);
+                document.querySelector(`#miniForecastDay${i} .miniTemp`).textContent = ("Temp: " + data.list[i].main.temp + "°F");
+                document.querySelector(`#miniForecastDay${i} .miniWind`).textContent = ("Wind Speed: " + data.list[i].wind.speed + " mph")
+                document.querySelector(`#miniForecastDay${i} .miniHumidity`).textContent = ("Humidity: " + data.list[i].main.humidity + "%");
             };
         })  
     })
@@ -153,6 +158,8 @@ var getSearchedCityForecast = function() {
         console.log("Fetch error :-S", err);
     });
 }
+
+//variable that holds 1 the first time, and increments. holds 2 the second time, etc
 
 // document.querySelectorAll("#miniTemp").textContent = ("Temp: " + data.main.temp + "°F");
 // document.querySelectorAll("#miniWind").textContent = ("Wind: " + data.wind.speed + "mph");
