@@ -32,7 +32,7 @@ document.querySelector("#searchButton").addEventListener('click',function() {
 
     //CODE TO SET LOCAL STORAGE TO CITY
     cityNameStringified = JSON.stringify(cityName)
-    searchedCitiesArray.push(cityNameStringified);
+    searchedCitiesArray.push(cityNameStringified); //NEED TO WORK ON ADDING MULTIPLE CITIES TO LOCAL STORAGE ARRAY
     localStorage.setItem('city', cityNameStringified)
 })
 
