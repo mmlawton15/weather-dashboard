@@ -20,6 +20,7 @@ var currentWeather;
 var currentUVIndex;
 var lat;
 var lon;
+var searchedCitiesArray = [];
 
 //WHEN SEARCH BUTTON IS CLICKED, LOG THE VALUE
 document.querySelector("#searchButton").addEventListener('click',function() {
@@ -28,6 +29,11 @@ document.querySelector("#searchButton").addEventListener('click',function() {
     document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
     getSearchedCityWeather();
     getSearchedCityForecast();
+
+    //CODE TO SET LOCAL STORAGE TO CITY
+    cityNameStringified = JSON.stringify(cityName)
+    searchedCitiesArray.push(cityNameStringified);
+    localStorage.setItem('city', cityNameStringified)
 })
 
 //CODE FOR CITY BUTTONS ON THE LEFT
