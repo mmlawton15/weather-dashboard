@@ -1,14 +1,7 @@
-// DONE - GIVEN a weather dashboard with form inputs
-// DONE - WHEN I search for a city
-// THEN I am presented with current and future conditions for that city and that city is added to the search history
-// WHEN I view current weather conditions for that city
-// THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-// WHEN I view the UV index
-// THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-// WHEN I view future weather conditions for that city
-// THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-// WHEN I click on a city in the search history
-// THEN I am again presented with current and future conditions for that city
+// set key value on line 36, remove lines 34 and 35 (24 and 25 now)
+//IE, cityUserSearchesFor.value
+//set the vity name and create a new button with each city that is stored in local storage
+//create a loop that goes through all items in local storage
 
 
 var cityUserSearchesFor = document.querySelector("#city");
@@ -33,58 +26,9 @@ document.querySelector("#searchButton").addEventListener('click',function() {
     //CODE TO SET LOCAL STORAGE TO CITY
     cityNameStringified = JSON.stringify(cityName)
     searchedCitiesArray.push(cityNameStringified); //NEED TO WORK ON ADDING MULTIPLE CITIES TO LOCAL STORAGE ARRAY
-    localStorage.setItem('city', cityNameStringified)
+    //localStorage.setItem("city", "city)
 })
 
-//CODE FOR CITY BUTTONS ON THE LEFT
-document.querySelector("#charleston").addEventListener('click', function() {
-    cityName = "Charleston";
-    document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
-    getSearchedCityWeather();
-    getSearchedCityForecast();
-})
-document.querySelector("#charlotte").addEventListener('click', function() {
-    cityName = "Charlotte";
-    document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
-    getSearchedCityWeather();
-    getSearchedCityForecast();
-})
-document.querySelector("#chicago").addEventListener('click', function() {
-    cityName = "Chicago";
-    document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
-    getSearchedCityWeather();
-    getSearchedCityForecast();
-})
-document.querySelector("#newYork").addEventListener('click', function() {
-    cityName = "New York";
-    document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
-    getSearchedCityWeather();
-    getSearchedCityForecast();
-})
-document.querySelector("#sanFrancisco").addEventListener('click', function() {
-    cityName = "San Francisco";
-    document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
-    getSearchedCityWeather();
-    getSearchedCityForecast();
-})
-document.querySelector("#columbia").addEventListener('click', function() {
-    cityName = "Columbia";
-    document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
-    getSearchedCityWeather();
-    getSearchedCityForecast();
-})
-document.querySelector("#palmBeach").addEventListener('click', function() {
-    cityName = "Palm Beach";
-    document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
-    getSearchedCityWeather();
-    getSearchedCityForecast();
-})
-document.querySelector("#atlanta").addEventListener('click', function() {
-    cityName = "Atlanta";
-    document.getElementById("cityAndDate").textContent = (cityName + " - " + currentDateAndTime); //display the icon from the current weather array ( + data.weather.icon)
-    getSearchedCityWeather();
-    getSearchedCityForecast();
-})
 
 //REFERENCE THE API WHEN THE BUTTON IS CLICKED BASED ON THE CITYNAME
 var getSearchedCityWeather = function() {
